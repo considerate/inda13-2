@@ -32,6 +32,7 @@ public class LinkedList<T> {
      *   <li> if size == 1, first == last, </li>
      *   <li> last.next == null. </li>
      * </ul>
+     * Time complexity: O(1)
      */
     public boolean isHealthy() {
     	boolean isHealthy = true;
@@ -70,6 +71,7 @@ public class LinkedList<T> {
 
     /**
      * Inserts the given element at the beginning of this list.
+     * Time complexity: O(1)
      */
     public void addFirst(T element) {
         ListElement<T> firstElement = new ListElement<T>(element);
@@ -85,6 +87,7 @@ public class LinkedList<T> {
 
     /**
      * Inserts the given element at the end of this list.
+     * Time complexity: O(1)
      */
     public void addLast(T element) {
          ListElement<T> lastElement = new ListElement<T>(element);
@@ -103,6 +106,7 @@ public class LinkedList<T> {
     /**
      * Returns the first element of this list.
      * Returns <code>null</code> if the list is empty.
+     * Time complexity: O(1)
      */
     public T getFirst() {
         if(this.first != null) {
@@ -114,6 +118,7 @@ public class LinkedList<T> {
     /**
      * Returns the last element of this list.
      * Returns <code>null</code> if the list is empty.
+     * Time complexity: O(1)
      */
     public T getLast() {
         if(this.last != null) {
@@ -125,21 +130,19 @@ public class LinkedList<T> {
     /**
      * Returns the element at the specified position in this list.
      * Returns <code>null</code> if <code>index</code> is out of bounds.
+     * Time complexity: O(n)
      */
     public T get(int index) {
-        int currentIndex = 0;
-        ListElement<T> element = this.first;
-        if(currentIndex == index) {
-            return element.data;
+        if(index > size-1) {
+            //throw new IndexOutOfBoundsException();
+            return null;
         }
-        while((element = element.next) != null) {
-            currentIndex += 1;
+        int currentIndex = 0;
+        for(ListElement<T> element = this.first; element != null; element = element.next) {
             if(currentIndex == index) {
                 return element.data;
-            }
-        }
-        if(index > currentIndex) {
-            throw new IndexOutOfBoundsException();
+            }          
+            currentIndex += 1;
         }
         assert false; //Should never arrive here!
         return null;
@@ -148,6 +151,7 @@ public class LinkedList<T> {
     /**
      * Removes and returns the first element from this list.
      * Returns <code>null</code> if the list is empty.
+     * Time complexity: O(1)
      */
     public T removeFirst() {
         ListElement<T> firstElement = this.first;
@@ -162,6 +166,7 @@ public class LinkedList<T> {
 
     /**
      * Removes all of the elements from this list.
+     * Time complexity: O(1)
      */
     public void clear() {
         this.first = null;
@@ -171,6 +176,7 @@ public class LinkedList<T> {
 
     /**
      * Returns the number of elements in this list.
+     * Time complexity: O(1)
      */
     public int size() {
         return this.size;
@@ -178,6 +184,7 @@ public class LinkedList<T> {
 
     /**
      * Returns <code>true</code> if this list contains no elements.
+     * Time complexity: O(1)
      */
     public boolean isEmpty() {
         if(this.first == null && this.last == null) {
@@ -192,6 +199,7 @@ public class LinkedList<T> {
      * square brackets ("[]"). Adjacent elements are separated by the
      * characters ", " (comma and space). Elements are converted to
      * strings by the method toString() inherited from Object.
+     * Time complexity: O(n)
      */
     public String toString() {
         String returnString = "[";

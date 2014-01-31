@@ -159,6 +159,9 @@ public class LinkedList<T> {
             ListElement<T> nextElement = firstElement.next;
             this.first = nextElement;
             this.size -= 1;
+            if(this.size == 0) {
+                this.last = null;
+            }
             return firstElement.data;
         }
         return null;

@@ -169,6 +169,14 @@ public class TestList {
     assertEquals(0, list2.size());
     assertEquals(null, first);
     assertEquals(true, list2.isHealthy());
+
+    LinkedList<String> list3 = new LinkedList<String>();
+    list3.addFirst("Hello");
+    first = list3.removeFirst();
+    assertEquals(0, list3.size());
+    assertEquals("Hello", first);
+    assertEquals(true, list3.isHealthy());
+
   }
 
   @Test
